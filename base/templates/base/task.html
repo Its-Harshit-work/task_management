@@ -1,0 +1,95 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="page-title">Task: {{ task }}</h1>
+    <p class="description" Description: {{description}}>
+        Default code has been loaded into the Editor.
+    </p>
+
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+            <tr>
+                <td>{{ task.title }}</td>
+                <td>{{ task.description }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="2"><h3>No items in the list</h3></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<style>
+    /* General Container Styling */
+    .container {
+        max-width: 600px;
+        margin: auto;
+        background-color: #FFFFFF;
+        box-shadow: 2px 2px 15px -4px rgba(0, 0, 0, 0.15);
+        border-radius: 10px;
+        padding: 20px;
+        font-family: 'Nunito', sans-serif;
+    }
+
+    /* Page Title */
+    .page-title {
+        font-family: 'Raleway', sans-serif;
+        color: #1A73E8; /* Deep blue */
+        margin-bottom: 20px;
+    }
+
+    /* Description Paragraph */
+    .description {
+        color: #4A4A4A; /* Neutral gray */
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    /* Table Styling */
+    .styled-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 18px;
+        text-align: left;
+    }
+
+    .styled-table thead tr {
+        background-color: #1A73E8; /* Deep blue */
+        color: #FFFFFF;
+    }
+
+    .styled-table th, .styled-table td {
+        padding: 12px 15px;
+        border: 1px solid #E0E0E0;
+    }
+
+    .styled-table tbody tr {
+        background-color: #FFFFFF;
+    }
+
+    .styled-table tbody tr:nth-of-type(even) {
+        background-color: #F1F8FF; /* Light blue for alternate rows */
+    }
+
+    .styled-table tbody tr:hover {
+        background-color: #E3F2FD; /* Light blue on hover */
+    }
+
+    /* Empty State */
+    h3 {
+        color: #757575; /* Gray */
+        text-align: center;
+    }
+</style>
+{% endblock %}
