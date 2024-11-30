@@ -124,30 +124,3 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
-from decouple import config
-
-# Security
-SECRET_KEY = config("SECRET_KEY")
-DEBUG = config("DEBUG", default=False, cast=bool)
-ALLOWED_HOSTS = config("ALLOWED_HOSTS", default="").split(",")
-
-# Database
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": config("DATABASE_NAME", default="db.sqlite3"),
-        "USER": config("DATABASE_USER", default=""),
-        "PASSWORD": config("DATABASE_PASSWORD", default=""),
-        "HOST": config("DATABASE_HOST", default=""),
-        "PORT": config("DATABASE_PORT", default=""),
-    }
-}
-
-# Email (if needed)
-EMAIL_HOST = config("EMAIL_HOST", default="")
-EMAIL_PORT = config("EMAIL_PORT", cast=int, default=587)
-EMAIL_HOST_USER = config("EMAIL_HOST_USER", default="")
-EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD", default="")
-EMAIL_USE_TLS = config("EMAIL_USE_TLS", default=True, cast=bool)
